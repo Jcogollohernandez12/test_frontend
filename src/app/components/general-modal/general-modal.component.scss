@@ -1,0 +1,43 @@
+@import '../../../../src/assets/sass/globalVariables.scss';
+
+.general-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  width: 100vw;
+  height: 100vh;
+  background-color: #5858583d;
+  backdrop-filter: blur(0.3vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .general-modal__visible-container {
+    position: relative;
+    width: 35%;
+    background-color: $textWhite;
+    border-radius: 1vw;
+    box-shadow: 0px 16px 32px 0px #00000029;
+    overflow: hidden;
+
+    .general-modal__close-modal {
+      cursor: pointer;
+      position: absolute;
+      top: 1vw;
+      right: 1vw;
+      width: 1vw;
+      height: 1vw;
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+export type validKeys =
+  | 'eye-icon'
+  | 'hide-eye-icon'
+  | 'form-error'
+  | 'icon-close'
+  | 'successful-circle'
+  | 'error-circle'
+  | 'successful-circle-filled'
+  | 'loading-circle'
+  | 'user-icon'
+  | 'clinic-icon'
+  | 'reminder-icon'
+  | 'gear-icon'
+  | 'exit-icon'
+  | 'search-icon'
+  | 'back-icon'
+  | 'download-icon'
+  | 'new-calendar-icon'
+  | 'double-arrow-left'
+  | 'user-close-icon'
+  | 'arrow-down';
+
+export type iconThemes =
+  | 'dark'
+  | 'light'
+  | 'gray'
+  | 'light-blue'
+  | 'dark-blue'
+  | 'clearButton'
+  | 'degrade'
+  | 'error'
+  | 'successful';

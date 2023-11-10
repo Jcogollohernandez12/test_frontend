@@ -1,0 +1,36 @@
+@import '../../../../src/assets/sass/globalVariables.scss';
+
+.load-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 13;
+  height: 100vh;
+  width: 100vw;
+  background-color: $textWhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .load-component__load-icon-box {
+    width: 3.5vw;
+    aspect-ratio: 1/1;
+    animation: spin 1s linear infinite;
+  }
+
+  .load-component__load-text {
+    font-family: $cairo;
+    font-size: 1.2vw;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

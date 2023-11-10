@@ -1,0 +1,31 @@
+<button
+  [ngClass]="[
+    isDisabled ? 'disabled' : theme,
+    'height' + height,
+    'padding' + buttonXpadding,
+    isfullWith ? 'button__isFullWith' : ''
+  ]"
+  [disabled]="theme === 'disabled' && isDisabled"
+  (click)="onClickButton()"
+  *ngIf="!iconName; else haveIcon"
+>
+  {{ buttonText }}
+</button>
+
+<ng-template #haveIcon>
+  <button
+    [ngClass]="[
+      isDisabled ? 'disabled' : theme,
+      'height' + height,
+      'padding' + buttonXpadding,
+      isfullWith ? 'button__isFullWith' : ''
+    ]"
+    [disabled]="theme === 'disabled' && isDisabled"
+    (click)="onClickButton()"
+  >
+    <div style="height: 20px; margin: 0 10px">
+      <app-icon [iconName]="iconName" [iconTheme]="iconTheme"></app-icon>
+    </div>
+    {{ buttonText }}
+  </button>
+</ng-template>

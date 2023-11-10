@@ -1,0 +1,73 @@
+<section class="login">
+  <article class="login__form-login">
+    <h1 class="login__form-title">Bienvenido de nuevo</h1>
+    <p class="login__form-subtitle">
+      Por favor, introduce tu información de para iniciar
+    </p>
+
+    <form
+      class="login__form-container"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit(loginForm.value)"
+    >
+      <app-input
+        labelText="Correo electrónico"
+        placeholder="Ingresar"
+        identifier="email"
+        inputType="text"
+        formControlName="email"
+        [msgError]="
+          email.errors && email.errors['required'] && email.touched === true
+            ? 'El campo correo electrónico es necesario'
+            : email.errors && email.errors['email'] && email.touched
+            ? 'El campo debe ser un email válido'
+            : ''
+        "
+      ></app-input>
+      <app-input
+        labelText="Contraseña"
+        placeholder="Ingresar"
+        identifier="password"
+        inputType="password"
+        formControlName="password"
+        [msgError]="
+          password.errors &&
+          password.errors['required'] &&
+          password.touched === true
+            ? 'El campo contraseña es necesario'
+            : ''
+        "
+      ></app-input>
+      <p class="login__error-message" *ngIf="isErrorMessage !== ''">
+        {{ isErrorMessage }}
+      </p>
+      <button
+        type="button"
+        class="login__olvidaste-contraseña"
+        (click)="openPasswordRecoveryModal(true)"
+      >
+        ¿Deseas registrarte?
+      </button>
+      <app-button
+        [height]="buttonHeight"
+        buttonText="Comenzar"
+        [isfullWith]="true"
+        [isDisabled]="loginForm.valid && isErrorMessage === '' ? false : true"
+        (buttonCallBack)="onSubmit(loginForm.value)"
+      ></app-button>
+    </form>
+  </article>
+
+    <img
+      class="login__background-images"
+      src="../../../assets/images/svg/backgroup.svg"
+      alt="decoración de fondo"
+    />
+
+  <app-general-modal
+    [isModalClosed]="isRecoveryPasswordModalOpen"
+    (closingModal)="openPasswordRecoveryModal(false)"
+  >
+  </app-general-modal>
+  <app-load-component *ngIf="isLoading"></app-load-component>
+</section>

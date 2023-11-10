@@ -1,0 +1,8 @@
+<div class="general-modal" *ngIf="isModalClosed">
+  <div class="general-modal__visible-container">
+    <button class="general-modal__close-modal" (click)="closeModal()">
+      <app-icon [iconName]="iconName"></app-icon>
+    </button>
+    <ng-content></ng-content>
+  </div>
+</div>

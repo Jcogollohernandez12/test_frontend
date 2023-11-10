@@ -1,0 +1,95 @@
+@import '../../../../src/assets/sass/globalVariables.scss';
+
+$buttonsShadow: 0px 4px 4px 0px #00000040;
+
+@mixin button {
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+  font-family: $cairo;
+  transition: background-color 0.3s ease;
+}
+
+@mixin themeVariables($bg-color, $color, $bgHover: '', $shadow: '') {
+  @include button;
+  background-color: $bg-color;
+  color: $color;
+
+  @if ($bgHover !='' or $bg-color ==transparent) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $bgHover;
+    }
+  }
+
+  @if($shadow !='') {
+    box-shadow: $shadow
+  }
+}
+
+.button__isFullWith {
+  width: 100%
+}
+
+.darkBlue {
+  @include themeVariables($primaryDark, $bg, $primaryDarkHover, $buttonsShadow);
+}
+
+.lightBlue {
+  @include themeVariables($primaryLight, $textGray, $primaryLightHover, $buttonsShadow);
+}
+
+.lightBlueDarkText {
+  @include themeVariables($primaryLight, $textBlack, $primaryLightHover, $buttonsShadow);
+}
+
+.noBackground {
+  @include themeVariables(transparent, $primaryDark);
+}
+
+.disabled {
+  @include themeVariables($textGrayLight, $textGray);
+}
+
+.noBackgroundBorders {
+  @include themeVariables(transparent, $primaryDark);
+  border: 1px solid $primaryDark;
+}
+
+.height24 {
+  height: 2vw;
+}
+
+.height32 {
+  height: 2.5vw;
+}
+
+.height40 {
+  height: 3vw;
+}
+
+.height56 {
+  height: 4vw;
+}
+
+.height64 {
+  height: 5vw;
+}
+
+.padding10 {
+  padding: 4px 1vw;
+}
+
+.padding24 {
+  padding: 4px 3vw;
+}
+
+.padding56 {
+  padding: 4px 56px;
+}

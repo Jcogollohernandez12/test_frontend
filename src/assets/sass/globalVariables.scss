@@ -1,0 +1,133 @@
+/* -------------------------------------------------------------------------- */
+/*                                   COLORS                                   */
+/* -------------------------------------------------------------------------- */
+$primaryDark: #1c2172;
+$primaryDarkHover: #151956;
+
+$primaryLight: #99FFFF;
+$primaryLightHover: #78C7DB;
+
+$textBlack: #0D0F33;
+$textGrayDark: #728197;
+$textGray: #92929D;
+$textGrayLight: #EBEBEF;
+$textWhite: #ffffff;
+
+$bg: #F9FAFB;
+$bg-transparent: #99ffff0a;
+
+$info: #3ABFF8;
+$warning: #FBBD23;
+$error: #B1000F;
+$aprove: #20853B;
+
+$degradado: linear-gradient(45deg, #000 0%, #1C2172 29.01%, #43669E 51.30%, #97FEFD 100%);
+
+/* -------------------------------------------------------------------------- */
+/*                                    FONTS                                   */
+/* -------------------------------------------------------------------------- */
+
+// @import url('https://fonts.googleapis.com/css2?family=Cairo+Play:wght@600&family=Reem+Kufi:wght@700&family=Rubik&display=swap');
+
+@font-face {
+  font-family: 'Reem Kufi';
+  src: url('../fonts/ReemKufi-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('../fonts/Cairo-SemiBold.ttf') format('truetype');
+}
+
+$reemKufi: 'Reem Kufi', sans-serif;
+$rubik: 'Rubik', sans-serif;
+$cairo: 'Cairo Play', sans-serif;
+
+/* -------------------------------------------------------------------------- */
+/*                                 MEDIA QUERY                                */
+/* -------------------------------------------------------------------------- */
+
+/* Para utilizar los media queries se definió un mixin con el nombre stylesBasedOnSize que recibe como parámetro
+el nombre del tamaño de pantalla, en este caso: small, medium, large, los cuales son los break points más comunes
+en los diferentes dispositivos móviles. */
+
+/*
+uso:
+
+.mi-elemento {
+  // Aplicar estilos para pantallas pequeñas
+  @include stylesBasedOnSize("small") {
+    font-size: 14px;
+  }
+
+  // Aplicar estilos para pantallas medianas
+  @include stylesBasedOnSize("medium") {
+    font-size: 16px;
+  }
+
+  // Aplicar estilos para pantallas grandes
+  @include stylesBasedOnSize("large") {
+    font-size: 18px;
+  }
+}
+*/
+
+@mixin stylesBasedOnSize($size) {
+  @if $size =="small" {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @else if $size =="medium" {
+    @media (min-width: 768px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $size =="large" {
+    @media (min-width: 1025px) {
+      @content;
+    }
+  }
+
+  @else {
+    @content;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   HELPERS                                  */
+/* -------------------------------------------------------------------------- */
+
+@mixin svgPositioning ($w, $h, $zindex, $btm: 0, $top: 0, $left: 0, $right: 0, $transform: '') {
+  width: $w;
+  height: $h;
+  position: absolute;
+  z-index: $zindex;
+
+  @if ($btm !=0) {
+    bottom: $btm;
+  }
+
+  @if ($top !=0) {
+    top: $top;
+  }
+
+  @if ($left !=0) {
+    left: $left;
+  }
+
+  @if ($right !=0) {
+    right: $right;
+  }
+
+  @if ($transform !='') {
+    transform: $transform;
+  }
+}

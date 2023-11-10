@@ -1,0 +1,163 @@
+<ng-container [ngSwitch]="inputType">
+  <ng-container *ngSwitchCase="'password'">
+    <div class="input">
+      <label class="input__text-label" [for]="identifier">{{
+        labelText
+      }}</label>
+      <input
+        [ngClass]="[
+          'input__text-input',
+          msgError ? 'input__text-input--error' : ''
+        ]"
+        [type]="isPasswordShowing ? 'text' : 'password'"
+        [name]="identifier"
+        [id]="identifier"
+        [placeholder]="placeholder"
+        [(ngModel)]="inputContent"
+        (ngModelChange)="onChange($event)"
+        (blur)="onTouched()"
+      />
+      <button
+        type="button"
+        class="input__eye-button"
+        (click)="showHidePassword()"
+      >
+        <app-icon
+          [iconName]="isPasswordShowing ? eyeIconName : hideEyeIconName"
+          [iconTheme]="grayIconTheme"
+        ></app-icon>
+      </button>
+      <p class="input__error-message" *ngIf="msgError">
+        <app-icon
+          [iconName]="errorIconName"
+          [iconTheme]="errorIconTheme"
+        ></app-icon
+        >{{ msgError }}
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'text'">
+    <div class="input">
+      <label class="input__text-label" [for]="identifier">{{
+        labelText
+      }}</label>
+      <input
+        [ngClass]="[
+          'input__text-input',
+          msgError ? 'input__text-input--error' : ''
+        ]"
+        type="text"
+        [name]="identifier"
+        [id]="identifier"
+        [placeholder]="placeholder"
+        [(ngModel)]="inputContent"
+        (ngModelChange)="onChange($event)"
+        (blur)="onTouched()"
+      />
+      <p class="input__error-message" *ngIf="msgError">
+        <app-icon
+          [iconName]="errorIconName"
+          [iconTheme]="errorIconTheme"
+        ></app-icon
+        >{{ msgError }}
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'datePicker'">
+    <div class="input">
+      <label class="input__text-label" [for]="identifier">{{
+        labelText
+      }}</label>
+      <input
+        type="date"
+        [ngClass]="[
+          'input__text-input',
+          msgError ? 'input__text-input--error' : ''
+        ]"
+        [name]="identifier"
+        [id]="identifier"
+        [(ngModel)]="inputContent"
+        (ngModelChange)="onChange($event)"
+        (blur)="onTouched()"
+      />
+      <p class="input__error-message" *ngIf="msgError">
+        <app-icon
+          [iconName]="errorIconName"
+          [iconTheme]="errorIconTheme"
+        ></app-icon
+        >{{ msgError }}
+      </p>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'select'">
+    <div class="input">
+      <label class="input__text-label" [for]="identifier">{{
+        labelText
+      }}</label>
+      <app-icon
+        [iconTheme]="'gray'"
+        *ngIf="inputTooltipInfo"
+        style="height: 100%; aspect-ratio: 1/1"
+        iconName="form-error"
+        [matTooltip]="inputTooltipInfo"
+        matTooltipPosition="left"
+        matTooltipClass="tooltip-class"
+      ></app-icon>
+      <select
+        class="input__select"
+        [name]="identifier"
+        [id]="identifier"
+        (change)="selectValueChange($event)"
+      >
+        <option selected hidden value="">Seleccionar</option>
+        <option [ngValue]="option.value" *ngFor="let option of selectOptions">
+          {{ option.name }}
+        </option>
+      </select>
+      <div class="input__expand-icon">
+        <app-icon [iconName]="arrowDownIcon"></app-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'search'">
+    <div class="input">
+      <div class="input__search-icon-box">
+        <app-icon
+          [iconName]="searchIconName"
+          [iconTheme]="grayIconTheme"
+        ></app-icon>
+      </div>
+      <input
+        class="input__search-input"
+        type="text"
+        [placeholder]="placeholder"
+        [(ngModel)]="inputContent"
+        (ngModelChange)="onChange($event)"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'checkbox-text'">
+    <div class="input-radio" style="display: flex">
+      <input
+        class="input-radio__radio-main-blue"
+        type="checkbox"
+        [name]="identifier"
+        [value]="radioValue"
+        [(ngModel)]="inputContent"
+        (change)="checkboxChanges()"
+      />
+      <img
+        class="input-radio__checkbox-img-main-blue"
+        src="../../../../assets/images/svg/checkbox-main-blue.svg"
+        alt="checkbox button"
+      />
+      <div class="input-radio__checkbox-bg"></div>
+      <p class="input-radio__radio-text">{{ radioText | titlecase }}</p>
+    </div>
+  </ng-container>
+</ng-container>

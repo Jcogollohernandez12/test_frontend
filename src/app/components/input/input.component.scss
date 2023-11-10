@@ -1,0 +1,243 @@
+@import '../../../../src/assets/sass/globalVariables.scss';
+.input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .input__text-label {
+    width: 100%;
+    margin-bottom: 0.5vw;
+    font-family: $reemKufi;
+    font-size: 0.8vw;
+    color: $textGrayDark;
+  }
+
+  @mixin commonInputBoxesStyles {
+    width: 100%;
+    height: 3.5vw;
+    padding: 0.8vw 1vw;
+    border-radius: 1vw;
+    outline: none;
+    border: 0.1vw solid $textGrayLight;
+    background: $textWhite;
+    font-family: $rubik;
+    font-size: 1vw;
+  }
+
+  .input__select {
+    @include commonInputBoxesStyles();
+    appearance: none;
+  }
+
+  .input__text-input {
+    @include commonInputBoxesStyles();
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &:focus {
+      border: 0.1vw solid $primaryDark
+    }
+
+    &::placeholder {
+      font-family: $rubik;
+      font-size: 1vw;
+      color: $textGrayDark;
+    }
+  }
+
+  .input__text-input--error {
+    border: 0.1vw solid $error;
+
+    &:focus {
+      border: 0.1vw solid $error;
+    }
+  }
+
+  .input__eye-button {
+    cursor: pointer;
+    position: absolute;
+    right: 2%;
+    top: 2.2vw;
+    width: 2.1vw;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+  }
+
+  .input__search-icon-box {
+    position: absolute;
+    left: 1%;
+    top: 1vw;
+    width: 1.6vw;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+  }
+
+  .input__search-input {
+    width: 30%;
+    height: 3.5vw;
+    padding: 0.8vw 0.8vw;
+    padding-left: 3vw;
+    border-radius: 1vw;
+    outline: none;
+    border: 0.1vw solid $textGrayLight;
+    background: $textWhite;
+    font-family: $rubik;
+    font-size: 1vw;
+    line-height: 0;
+
+    &:focus {
+      border: 0.1 solid $primaryDark;
+    }
+
+    &::placeholder {
+      font-family: $rubik;
+      font-size: 1vw;
+      color: $textGrayDark;
+    }
+  }
+
+  .input__error-message {
+    height: 0.7vw;
+    display: flex;
+    margin: 4px 0;
+    padding: 0 1rem;
+    gap: 6px;
+    color: $error;
+    text-align: center;
+    font-family: $rubik;
+    font-size: 0.7vw;
+  }
+
+  @mixin iconsCommonStyles ($right, $top, $w) {
+    position: absolute;
+    right: $right;
+    top: $top;
+    width: $w;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+  }
+
+  .input__expand-icon {
+    pointer-events: none;
+    @include iconsCommonStyles(4%, 2.4vw, 1.5vw)
+  }
+}
+
+.input-radio {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  /* -------------------------------------------------------------------------- */
+  /*                          Input radio con imágenes                          */
+  /* -------------------------------------------------------------------------- */
+
+  @mixin inputRadioBasics ($width, $height, $minW: 0) {
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    width: $width;
+    min-width: $minW;
+    height: $height;
+    opacity: 0;
+  }
+
+  .input-radio__input-radio-button {
+    @include inputRadioBasics(6vw, 100%, 7vw);
+
+    &:hover+.input-radio__radio-button {
+      box-shadow: 0px 3px 6px 3px #0000002e;
+    }
+
+    &:checked+.input-radio__radio-button {
+      background-color: $primaryDark;
+      color: #fff;
+      box-shadow: 0px 3px 6px 3px #0000002e;
+    }
+  }
+
+  .input-radio__radio-button {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3vw 0.6vw;
+    background-color: $textGrayLight;
+    border-radius: 1.2vw;
+    font-family: $cairo;
+    font-size: 1vw;
+    color: $textGray;
+    transition: all 0.3s ease;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                     Input radio tradicionales con texto                    */
+  /* -------------------------------------------------------------------------- */
+
+  .input-radio__radio-main-blue {
+    @include inputRadioBasics(2vw, 2vw);
+
+    &:checked+.input-radio__radio-img-main-blue {
+      opacity: 1;
+    }
+
+    &:checked+.input-radio__checkbox-img-main-blue {
+      opacity: 1;
+    }
+  }
+
+  .input-radio__radio-img-main-blue {
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    width: 2vw;
+    height: 2vw;
+    opacity: 0;
+  }
+
+  .input-radio__radio-bg {
+    position: absolute;
+    z-index: 8;
+    left: 0;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    border: 1px solid $textGray;
+  }
+
+  .input-radio__checkbox-img-main-blue {
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    width: 1.8vw;
+    height: 1.8vw;
+    opacity: 0;
+  }
+
+  .input-radio__checkbox-bg {
+    position: absolute;
+    z-index: 8;
+    left: 0;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 0.6vw;
+    border: 1px solid $textGrayLight;
+  }
+
+  .input-radio__radio-text {
+    margin: 0 0.5vw;
+    font-size: 1vw;
+    font-family: $rubik;
+    display: flex;
+    align-items: center;
+  }
+}
