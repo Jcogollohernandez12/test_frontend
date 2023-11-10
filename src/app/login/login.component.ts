@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, Injectable } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,7 +14,6 @@ import { EYE_ICON } from '../../utils/constants/icon.constants';
 import { buttonHeights } from '../../utils/types/button.types';
 import { validKeys } from '../../utils/types/icon.types';
 import { ButtonComponent } from '../../app/components/button/button.component';
-import { GeneralModalComponent } from '../components/general-modal/general-modal.component';
 import { IconComponent } from '../components/icon/icon.component';
 import { InputComponent } from '../components/input/input.component';
 import { LoadComponentComponent } from '../components/load-component/load-component.component';
@@ -27,24 +26,24 @@ import { LoadComponentComponent } from '../components/load-component/load-compon
     IconComponent,
     InputComponent,
     ButtonComponent,
-    GeneralModalComponent,
     LoadComponentComponent,
     ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent implements OnInit {
+  fb = inject(NonNullableFormBuilder);
+  router = inject(Router);
   iconName: validKeys = EYE_ICON;
   isPasswordShowing: boolean = false;
   buttonHeight: buttonHeights = HEIGHT_64;
   isLoading: boolean = false;
 
   loginForm!: FormGroup;
-  fb = inject(NonNullableFormBuilder);
-  router = inject(Router);
 
-  isRecoveryPasswordModalOpen: boolean = false;
+  isRegisterUser: boolean = false;
   isErrorMessage!: string;
 
   ngOnInit(): void {
@@ -91,7 +90,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public openPasswordRecoveryModal(value: boolean): void {
-    this.isRecoveryPasswordModalOpen = value;
+  public gotToRouterRegister(): void {
+    this.isLoading = true;
+    setTimeout(() => {
+      //this.router.navigate(['/tu-ruta-de-registro']);
+      this.isLoading = false;
+    }, 3000);
   }
 }

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InputComponent } from './input.component';
-import { ERROR_THEME, EYE_ICON, FORM_ERROR, HIDE_EYE_ICON, SEARCH_ICON } from 'src/utils/constants/icon.constants';
+import { ERROR_THEME, EYE_ICON, FORM_ERROR, HIDE_EYE_ICON, SEARCH_ICON } from '../../../utils/constants/icon.constants';
 
 describe('InputComponent', () => {
   let component: InputComponent;

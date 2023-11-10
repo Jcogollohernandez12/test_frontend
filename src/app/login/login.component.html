@@ -1,10 +1,10 @@
+
 <section class="login">
   <article class="login__form-login">
-    <h1 class="login__form-title">Bienvenido de nuevo</h1>
+    <h1 class="login__form-title">Hola! un gusto tenerte aqui de nuevo</h1>
     <p class="login__form-subtitle">
       Por favor, introduce tu información de para iniciar
     </p>
-
     <form
       class="login__form-container"
       [formGroup]="loginForm"
@@ -41,13 +41,18 @@
       <p class="login__error-message" *ngIf="isErrorMessage !== ''">
         {{ isErrorMessage }}
       </p>
-      <button
+      <div>
+        <span class="txt1 p-b-17">
+            ¿No tienes cuenta?
+        </span>
+       <button
         type="button"
-        class="login__olvidaste-contraseña"
-        (click)="openPasswordRecoveryModal(true)"
-      >
-        ¿Deseas registrarte?
+        class="login__register-user"
+        (click)="gotToRouterRegister()"
+      >crea una aqui
       </button>
+    </div>
+
       <app-button
         [height]="buttonHeight"
         buttonText="Comenzar"
@@ -57,17 +62,5 @@
       ></app-button>
     </form>
   </article>
-
-    <img
-      class="login__background-images"
-      src="../../../assets/images/svg/backgroup.svg"
-      alt="decoración de fondo"
-    />
-
-  <app-general-modal
-    [isModalClosed]="isRecoveryPasswordModalOpen"
-    (closingModal)="openPasswordRecoveryModal(false)"
-  >
-  </app-general-modal>
   <app-load-component *ngIf="isLoading"></app-load-component>
 </section>

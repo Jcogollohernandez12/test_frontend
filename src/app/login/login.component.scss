@@ -5,14 +5,23 @@
   height: 100vh;
   display: flex;
   background: $bg-transparent;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5% 0 5%;
+
+
 
   .login__form-login {
     width: 50%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 5% 0 13%;
+    align-items: center;
+    padding: 0 5% 0 5%;
+    border-radius: 50px;
+    border: 1px solid $primaryDarkHover;
+    box-shadow: 0 0 10px $primaryDarkHover;
 
     .login__form-title {
       font-family: $reemKufi;
@@ -34,7 +43,7 @@
       flex-direction: column;
       gap: 1vw;
 
-      .login__olvidaste-contraseña {
+      .login__register-user {
         cursor: pointer;
         width: fit-content;
         margin: 1.2vw auto 2vw auto;
@@ -51,37 +60,6 @@
       color: $error;
       font-size: 0.8vw;
       text-align: center;
-    }
-  }
-
-  .login__form-images {
-    position: relative;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    background: linear-gradient(45deg, #000 0%, #1C2172 29.01%, #43669E 51.30%, #97FEFD 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .login__background-images {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .login__miia-logo {
-      position: absolute;
-      width: 80%;
-      height: 30%;
-    }
-
-    .login__miia-cola {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 40%;
-      transform: rotateY(180deg);
     }
   }
 }

@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -12,32 +12,28 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$test-primary: mat.define-palette(mat.$indigo-palette);
-$test-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$sql_test-primary: mat.define-palette(mat.$indigo-palette);
+$sql_test-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$test-warn: mat.define-palette(mat.$red-palette);
+$sql_test-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$test-theme: mat.define-light-theme((color: (primary: $test-primary,
-        accent: $test-accent,
-        warn: $test-warn,
-      )));
+$sql_test-theme: mat.define-light-theme((
+  color: (
+    primary: $sql_test-primary,
+    accent: $sql_test-accent,
+    warn: $sql_test-warn,
+  )
+));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($test-theme);
+@include mat.all-component-themes($sql_test-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-/* You can add global styles to this file, and also import other style files */
-
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-/* Document
-   ========================================================================== */
 
 * {
   box-sizing: border-box;

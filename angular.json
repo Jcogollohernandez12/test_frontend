@@ -3,18 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test_frontend": {
+    "sql_test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "standalone": true
-        },
-        "@schematics/angular:directive": {
-          "standalone": true
-        },
-        "@schematics/angular:pipe": {
-          "standalone": true
+          "style": "scss"
         }
       },
       "root": "",
@@ -24,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test_frontend",
+            "outputPath": "dist/sql_test",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -39,7 +32,12 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -69,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test_frontend:build:production"
+              "buildTarget": "sql_test:build:production"
             },
             "development": {
-              "buildTarget": "test_frontend:build:development"
+              "buildTarget": "sql_test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test_frontend:build"
+            "buildTarget": "sql_test:build"
           }
         },
         "test": {
@@ -106,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "b263c0af-114a-465e-99fd-63835513e441"
+    "analytics": "a39cc9f2-f7bd-447e-817a-f4287488660a"
   }
 }
