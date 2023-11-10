@@ -18,7 +18,6 @@ import { GeneralModalComponent } from '../components/general-modal/general-modal
 import { IconComponent } from '../components/icon/icon.component';
 import { InputComponent } from '../components/input/input.component';
 import { LoadComponentComponent } from '../components/load-component/load-component.component';
-import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-login',
@@ -36,13 +35,15 @@ import { routes } from '../../app.routes';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb: NonNullableFormBuilder, routes: Router) {}
   iconName: validKeys = EYE_ICON;
   isPasswordShowing: boolean = false;
   buttonHeight: buttonHeights = HEIGHT_64;
   isLoading: boolean = false;
 
   loginForm!: FormGroup;
+  fb = inject(NonNullableFormBuilder);
+  router = inject(Router);
+
   isRecoveryPasswordModalOpen: boolean = false;
   isErrorMessage!: string;
 

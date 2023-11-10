@@ -7,9 +7,9 @@ import { AuthModel } from '../interfaces/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class MascotaService {
+export class AuthService {
   private myAppUrl: string = environment.endpoint;
-  private myApiUrl: string = 'api/Mascota/';
+  private myApiUrl: string = 'api/Login/';
 
   constructor(private http: HttpClient) { }
 
