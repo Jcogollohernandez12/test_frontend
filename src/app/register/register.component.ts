@@ -19,7 +19,7 @@ import { InputComponent } from '../components/input/input.component';
 import { LoadComponentComponent } from '../components/load-component/load-component.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [
     CommonModule,
@@ -29,81 +29,65 @@ import { LoadComponentComponent } from '../components/load-component/load-compon
     LoadComponentComponent,
     ReactiveFormsModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
-
-export class LoginComponent implements OnInit {
-
+export class RegisterComponent implements OnInit {
+  ngOnInit(): void {
+   this.createForm();
+   this.cleanErrorMessage();
+  }
   fb = inject(NonNullableFormBuilder);
   router = inject(Router);
   iconName: validKeys = EYE_ICON;
+  isLoginShowing: boolean = false;
   buttonHeight: buttonHeights = HEIGHT_64;
   isLoading: boolean = false;
 
-  loginForm!: FormGroup;
+
+  registerForm!: FormGroup;
 
   isRegisterUser: boolean = false;
   isErrorMessage!: string;
 
-  ngOnInit(): void {
-    this.createForm();
-    this.cleanErrorMessage();
-  }
 
   private createForm(): void {
-    this.loginForm = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
+    this.registerForm = this.fb.group({
+      username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required,Validators.minLength(6)]),
     });
   }
 
-  get email() {
-    return this.loginForm.controls['email'];
+  get username() {
+    return this.registerForm.controls['username'];
   }
 
   get password() {
-    return this.loginForm.controls['password'];
+    return this.registerForm.controls['password'];
   }
 
   private cleanErrorMessage(): void {
-    this.loginForm.valueChanges.subscribe(() => {
+    this.registerForm.valueChanges.subscribe(() => {
       this.isErrorMessage = '';
     });
   }
 
+
+
   public onSubmit(formData: AuthModel): void {
-    if (this.loginForm.valid && this.isErrorMessage === '') {
+    if (this.registerForm.valid && this.isErrorMessage === '') {
       this.isLoading = true;
- var data = {
-       Username: formData.email,
-        password: formData.password,
-      };
-
-      console.log('Formulario enviado:', data);
-
-      //this.authService.login(formData).subscribe(
-      //  (response) => {
-      //    console.log('Usuario autenticado:', response);
-      //    this.isLoading = false;
-      //    // this.router.navigate(['/ruta-de-inicio']);
-      //  },
-      //  (error) => {
-      //    // Error en el login
-      //    console.error('Error en el login:', error);
-      //    this.isErrorMessage = 'Error en el inicio de sesión. Verifica tus credenciales.';
-      //    this.isLoading = false;
-      //  }
-      //);
+      console.log('Formulario enviado:', formData);
       this.isLoading = false;
     }
   }
 
-  public gotToRouterRegister(): void {
+  public gotToRouterLogin(): void {
     this.isLoading = true;
     setTimeout(() => {
-      this.router.navigate(['/register-user']);
+      this.router.navigate(['/login']);
       this.isLoading = false;
     }, 500);
   }
+
 }

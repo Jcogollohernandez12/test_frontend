@@ -1,0 +1,65 @@
+@import '../../../src/assets/sass/globalVariables.scss';
+
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: $bg-transparent;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5% 0 5%;
+
+
+
+  .register__form-login {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5% 0 5%;
+    border-radius: 50px;
+    border: 1px solid $primaryDarkHover;
+    box-shadow: 0 0 10px $primaryDarkHover;
+
+    .register__form-title {
+      font-family: $reemKufi;
+      font-size: 2.5vw;
+      margin: 0;
+      margin-bottom: 1vw;
+    }
+
+    .register__form-subtitle {
+      font-family: $rubik;
+      font-size: 1vw;
+      margin: 0;
+      margin-bottom: 2vw;
+    }
+
+    .register__form-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+
+      .register__register-user {
+        cursor: pointer;
+        width: fit-content;
+        margin: 1.2vw auto 2vw auto;
+        background: none;
+        border: none;
+        font-family: $cairo;
+        font-size: 1vw;
+        color: $primaryDark;
+      }
+    }
+
+    .register__error-message {
+      margin: 0;
+      color: $error;
+      font-size: 0.8vw;
+      text-align: center;
+    }
+  }
+}
